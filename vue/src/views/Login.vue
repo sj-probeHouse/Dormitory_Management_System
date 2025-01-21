@@ -4,7 +4,7 @@
                     <img alt="" src="../../public/login_Team.png" style="width: 600px"/>
                 </div>-->
         <div style="width: 400px; margin: 150px auto">
-            <div style="color: black; font-size: 30px; text-align: left; padding: 30px 0">登陆</div>
+            <div style="color: black; font-size: 30px; text-align: left; padding: 30px 0">GDUT宿舍管理系统-登陆</div>
             <el-form ref="form" :model="form" :rules="rules" size="large">
                 <el-form-item prop="username">
                     <el-input v-model="form.username" clearable prefix-icon="avatar"></el-input>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="footer">
-        ©Copyright 2021-2023 NiToot
+        ©Copyright 2024-2025 AtuWeb
     </div>
 </template>
 <script src="@/assets/js/Login.js"></script>

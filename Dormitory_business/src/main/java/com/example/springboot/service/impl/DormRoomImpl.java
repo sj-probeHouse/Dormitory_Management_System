@@ -87,7 +87,7 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
     }
 
     /**
-     * 床位信息，查询该学生是否已由床位
+     * 床位信息，查询该学生是否已有床位
      */
     @Override
     public DormRoom judgeHadBed(String username) {

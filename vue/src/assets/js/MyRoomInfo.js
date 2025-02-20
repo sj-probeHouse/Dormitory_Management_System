@@ -21,6 +21,9 @@ export default {
                 thirdBed: "",
                 fourthBed: "",
             },
+            pay:{
+                amount:"",
+            }
         };
     },
     created() {
@@ -33,10 +36,23 @@ export default {
             this.name = this.form.username;
         },
         getInfo() {
+            //获取床位信息
             request.get("/room/getMyRoom/" + this.name).then((res) => {
                 if (res.code === "0") {
                     this.room = res.data;
                     console.log(this.room);
+                } else {
+                    ElMessage({
+                        message: res.msg,
+                        type: "error",
+                    });
+                }
+            });
+            //获取缴费金额
+            request.get("/room/getMyPay/" + this.name).then((res) => {
+                if (res.code === "0") {
+                    this.pay.amount = res.data;
+                    console.log(this.pay);
                 } else {
                     ElMessage({
                         message: res.msg,

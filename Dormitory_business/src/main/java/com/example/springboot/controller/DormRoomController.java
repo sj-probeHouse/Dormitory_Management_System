@@ -3,10 +3,12 @@ package com.example.springboot.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.common.Result;
 import com.example.springboot.entity.DormRoom;
+import com.example.springboot.entity.PaymentTable;
 import com.example.springboot.service.DormRoomService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 @RestController
@@ -150,6 +152,20 @@ public class DormRoomController {
             return Result.success(dormRoom);
         } else {
             return Result.error("-1", "不存在该生");
+        }
+    }
+
+    /**
+     * 学生功能： 查询缴费金额
+     */
+    @GetMapping("/getMyPay/{name}")
+    public Result<?> getMyPay(@PathVariable String name) {
+        PaymentTable paymentTable = dormRoomService.getPayMessage(name);
+        BigDecimal amount = paymentTable.getAmount();
+        if (paymentTable != null){
+            return Result.success(amount);
+        }else{
+            return Result.error("-1","查询缴费金额未命中");
         }
     }
 

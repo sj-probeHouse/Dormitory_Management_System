@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/dormManager")
@@ -87,4 +88,19 @@ public class DormManagerController {
             return Result.error("-1", "用户名或密码错误");
         }
     }
+
+    /**
+     * 宿管发布缴费信息
+     */
+    @PostMapping("/sendAmount")
+    public Result<?> sendAmount(@RequestBody BigDecimal amount) {
+        int i = dormManagerService.sendPayForStu(amount);
+        if (i == 1){
+            return Result.success();
+        }else{
+            return Result.error("400","更新资源失败");
+        }
+    }
+
+
 }

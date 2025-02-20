@@ -65,7 +65,30 @@
                 </template>
                 <span class="rightSpan">{{ this.room.currentCapacity }}</span>
               </el-descriptions-item>
+              <el-descriptions-item>
+                <template #label>
+                  <div>
+                    <el-icon>
+                      <warning/>
+                    </el-icon>
+                    缴费情况
+                  </div>
+                </template>
+                <span class="rightSpan">
+                {{ pay && pay.amount ? pay.amount : '无需缴费' }}  <!-- 显示缴费金额，如果不存在则显示“无” -->
+            </span>
+              </el-descriptions-item>
             </el-descriptions>
+            <!-- 将按钮移动到表格外面 -->
+            <div style="margin-top: 20px; text-align: left">
+              <el-button
+                  type="primary"
+                  size="small"
+                  @click="confirmPayment"
+                  v-if="pay && pay.amount && Number(pay.amount) > 0" > <!-- 确保标签闭合 -->
+              立即缴费
+              </el-button>
+            </div>
           </div>
           <!--      床位信息-->
           <div style="margin-left: 50px;margin-top: 40px">

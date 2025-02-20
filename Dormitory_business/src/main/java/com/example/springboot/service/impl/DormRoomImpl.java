@@ -7,7 +7,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.springboot.common.JudgeBedName;
 import com.example.springboot.entity.AdjustRoom;
 import com.example.springboot.entity.DormRoom;
+import com.example.springboot.entity.PaymentTable;
 import com.example.springboot.mapper.DormRoomMapper;
+import com.example.springboot.mapper.PaymentTableMapper;
 import com.example.springboot.service.DormRoomService;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
 
     @Resource
     private DormRoomMapper dormRoomMapper;
+    @Resource
+    private PaymentTableMapper paymentTableMapper;
 
     /**
      * 首页顶部：空宿舍统计
@@ -101,6 +105,19 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
         qw.eq("fourth_bed", username);
         DormRoom dormRoom = dormRoomMapper.selectOne(qw);
         return dormRoom;
+    }
+
+    /**
+     * 学生缴费信息
+     * @param username
+     * @return
+     */
+    @Override
+    public PaymentTable getPayMessage(String username) {
+        QueryWrapper<PaymentTable> qw1 = new QueryWrapper<>();
+        qw1.eq("student_name",username);
+        PaymentTable paymentTable = paymentTableMapper.selectOne(qw1);
+        return paymentTable;
     }
 
     /**

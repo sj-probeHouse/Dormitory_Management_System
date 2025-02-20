@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.springboot.entity.AdjustRoom;
 import com.example.springboot.entity.DormRoom;
+import com.example.springboot.entity.PaymentTable;
 
 
 public interface DormRoomService extends IService<DormRoom> {
@@ -28,6 +29,8 @@ public interface DormRoomService extends IService<DormRoom> {
     //床位信息，查询该学生是否已有宿舍
     DormRoom judgeHadBed(String username);
 
+    //缴费信息，查询该学生是否已经完成缴费
+    PaymentTable getPayMessage(String username);
     //主页 住宿人数
     Long selectHaveRoomStuNum();
 

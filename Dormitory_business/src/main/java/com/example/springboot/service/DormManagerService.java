@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.springboot.entity.DormManager;
 
+import java.math.BigDecimal;
+
 
 public interface DormManagerService extends IService<DormManager> {
 
@@ -21,4 +23,7 @@ public interface DormManagerService extends IService<DormManager> {
 
     //删除学生信息
     int deleteDormManager(String username);
+
+    //发布缴费信息
+    int sendPayForStu(BigDecimal amount);
 }

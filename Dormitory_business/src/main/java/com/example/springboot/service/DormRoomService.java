@@ -29,8 +29,12 @@ public interface DormRoomService extends IService<DormRoom> {
     //床位信息，查询该学生是否已有宿舍
     DormRoom judgeHadBed(String username);
 
-    //缴费信息，查询该学生是否已经完成缴费
+    //缴费功能：查询该学生是否已经完成缴费
     PaymentTable getPayMessage(String username);
+
+    //缴费功能：学生提交缴费
+    int confirmPayment(String username);
+
     //主页 住宿人数
     Long selectHaveRoomStuNum();
 

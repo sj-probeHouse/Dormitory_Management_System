@@ -16,4 +16,5 @@ public class PaymentTable {
     private String studentName;
     private BigDecimal amount;
     private int isPaid;
+    private String memo;
 }

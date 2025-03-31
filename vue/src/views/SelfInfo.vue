@@ -99,9 +99,10 @@
                         </el-button>
                     </el-tooltip>
                 </div>
-                <div class="img" style="margin-left: 130px ">
-                    <img alt="" src="../../public/self_Space.png"/>
+                <div class="img-container">
+                  <img class="fade-img" style="width: 600px; margin-left: 120px; margin-top: 65px" alt="" src="../../public/self_Space_page.png"/>
                 </div>
+
             </div>
             <div>
                 <!--      弹窗-->
@@ -183,4 +184,34 @@
     100% {
         background-position: 100% 100%;
     }
-}</style>
+}
+
+/* 图片外部容器，让图片居中 */
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* 图片淡入淡出动画 */
+.fade-img {
+  width: 300px;
+  animation: fadeInLeft 2s ease-in-out;
+}
+
+/* 从右向左淡入 */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+</style>

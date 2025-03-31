@@ -108,7 +108,7 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
     }
 
     /**
-     * 学生缴费信息
+     * 学生缴费信息查询
      * @param username
      * @return
      */
@@ -118,6 +118,24 @@ public class DormRoomImpl extends ServiceImpl<DormRoomMapper, DormRoom> implemen
         qw1.eq("student_name",username);
         PaymentTable paymentTable = paymentTableMapper.selectOne(qw1);
         return paymentTable;
+    }
+
+    /**
+     * 学生缴费确认
+     * @param username
+     * @return
+     */
+    @Override
+    public int confirmPayment(String username) {
+
+        UpdateWrapper<PaymentTable> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("student_name", username) // 使用主键作为更新条件
+                .set("is_paid", 0)  // 更新 is_paid 字段
+                .set("amount", 0);  // 更新 amount 字段
+
+        int affectedRows = paymentTableMapper.update(null, updateWrapper);
+
+        return affectedRows;
     }
 
     /**

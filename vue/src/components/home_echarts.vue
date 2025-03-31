@@ -1,5 +1,5 @@
 <template>
-  <div id="echarts-dom" style="width: 650px;height: 500px"></div>
+  <div id="echarts-dom" style="width: 570px;height: 500px"></div>
 </template>
 
 <script>
@@ -34,8 +34,12 @@ export default {
           x2: 40,
           y2: 40,
           borderWidth: 10,
-          top: '10%',
-          bottom: '0%',
+          // top: '10%',
+          // bottom: '0%',
+          left: '10%',  // 左边距
+          right: '10%', // 右边距
+          top: '10%',   // 顶部边距
+          bottom: '20%', // 底部边距
           containLabel: true
         }
       },

@@ -40,7 +40,7 @@
         <!-- 下部-->
         <div style="display: flex;width: 100%;margin-top: 40px;align-items: center;justify-content: center;">
             <!--   左侧 宿舍通告-->
-            <div style="margin-right: 5%">
+            <div style="margin-right: 3%">
                 <span style="font-size: 22px;display: block;margin-bottom: 30px;margin-left: 10px;">宿舍通告</span>
                 <el-timeline>
                     <el-timeline-item v-for="(activity, index) in activities.slice(0, 8)" :key="index"
@@ -51,12 +51,12 @@
                 </el-timeline>
             </div>
             <!--   中部-->
-            <div style="height: 588px">
+            <div style="height: 500px">
         <span style="
             font-size: 22px;
             display: block;
-            margin-bottom: 30px;
-            margin-left: 10px;
+            margin-bottom: 5px;
+            margin-left: 200px;
           ">宿舍学生人数分布</span>
                 <home_echarts/>
             </div>

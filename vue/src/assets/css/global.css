@@ -1,8 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/* 1. 保留字体设置（全局影响） */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+/*!* 2. 为 el-tooltip 和 el-icon 添加局部样式 *!*/
+/*.el-tooltip {*/
+/*    z-index: 1000; !* 确保 tooltip 在前面 *!*/
+/*}*/
+
+/*.el-icon {*/
+/*    font-size: 24px !important; !* 设置图标的大小 *!*/
+/*    width: 24px !important; !* 设置宽度 *!*/
+/*    height: 24px !important; !* 设置高度 *!*/
+/*    display: inline-block; !* 确保图标显示 *!*/
+/*    line-height: 24px; !* 保证垂直居中 *!*/
+/*}*/
+
+/*!* 特定的 el-icon-circle-check 和 el-icon-circle-close 图标样式 *!*/
+/*.el-icon-circle-check,*/
+/*.el-icon-circle-close {*/
+/*    font-size: 24px !important; !* 强制设置大小 *!*/
+/*    color: green !important; !* 设置图标颜色 *!*/
+/*}*/

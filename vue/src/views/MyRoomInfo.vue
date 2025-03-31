@@ -8,7 +8,7 @@
       <div style="display: flex">
         <div style="margin-top: 55px">
           <div style="margin-left: 50px;margin-top: 20px">
-            <!--      房间信息-->
+            <!-- 房间信息 -->
             <el-descriptions :column="1" border style="width: 500px" title="房间信息">
               <el-descriptions-item>
                 <template #label>
@@ -75,8 +75,8 @@
                   </div>
                 </template>
                 <span class="rightSpan">
-                {{ pay && pay.amount ? pay.amount : '无需缴费' }}  <!-- 显示缴费金额，如果不存在则显示“无” -->
-            </span>
+                  {{ pay && pay.amount ? pay.amount : '无需缴费' }}  <!-- 显示缴费金额，如果不存在则显示“无” -->
+                </span>
               </el-descriptions-item>
             </el-descriptions>
             <!-- 将按钮移动到表格外面 -->
@@ -84,13 +84,15 @@
               <el-button
                   type="primary"
                   size="small"
-                  @click="confirmPayment"
-                  v-if="pay && pay.amount && Number(pay.amount) > 0" > <!-- 确保标签闭合 -->
-              立即缴费
+                  @click="handlePayment"
+                  v-if="pay && pay.amount && Number(pay.amount) > 0"
+              >
+                立即缴费
               </el-button>
             </div>
           </div>
-          <!--      床位信息-->
+
+          <!-- 床位信息 -->
           <div style="margin-left: 50px;margin-top: 40px">
             <el-descriptions :column="1" border style="width: 500px" title="床位信息">
               <el-descriptions-item>
@@ -104,7 +106,7 @@
                 </template>
                 <el-tag
                     v-if="this.room.firstBed != null"
-                    :type="this.name === this.room.firstBed ? 'primary':'info'"
+                    :type="this.name === this.room.firstBed ? 'primary' : 'info'"
                     disable-transitions
                 >{{ this.room.firstBed }}
                 </el-tag>
@@ -120,7 +122,7 @@
                 </template>
                 <el-tag
                     v-if="this.room.secondBed != null"
-                    :type="this.name === this.room.secondBed ? 'primary':'info'"
+                    :type="this.name === this.room.secondBed ? 'primary' : 'info'"
                     disable-transitions
                 >{{ this.room.secondBed }}
                 </el-tag>
@@ -136,7 +138,7 @@
                 </template>
                 <el-tag
                     v-if="this.room.thirdBed != null"
-                    :type="this.name === this.room.thirdBed ? 'primary':'info'"
+                    :type="this.name === this.room.thirdBed ? 'primary' : 'info'"
                     disable-transitions
                 >{{ this.room.thirdBed }}
                 </el-tag>
@@ -152,7 +154,7 @@
                 </template>
                 <el-tag
                     v-if="this.room.fourthBed != null"
-                    :type="this.name === this.room.fourthBed ? 'primary':'info'"
+                    :type="this.name === this.room.fourthBed ? 'primary' : 'info'"
                     disable-transitions
                 >{{ this.room.fourthBed }}
                 </el-tag>
@@ -160,12 +162,31 @@
             </el-descriptions>
           </div>
         </div>
-        <div style="margin-left: 100px;margin-top: 85px">
-          <img alt="" src="../../public/myRoom.png" style="width: 600px">
+
+        <div class="img-container" style="margin-left: 100px; margin-top: 85px">
+          <img class="fade-img"alt="" src="../../public/self_Space_page.png" style="width: 600px">
         </div>
       </div>
     </el-card>
+
+    <!-- 确认缴费弹框 -->
+    <el-dialog
+        v-model="dialogVisible"
+        title="确认缴费"
+        width="30%"
+        @close="dialogVisible = false"
+    >
+      <span>您确定要进行缴费吗？</span>
+      <template #footer>
+        <span class="dialog-footer">
+            <el-button @click="dialogVisible = false">取消</el-button>
+            <el-button type="primary" @click="confirmPayment">确认</el-button>
+        </span>
+      </template>
+    </el-dialog>
+
   </div>
 </template>
+
 <script src="@/assets/js/MyRoomInfo.js"></script>
 <style scoped>@import '../assets/css/MyRoomInfo.css';</style>

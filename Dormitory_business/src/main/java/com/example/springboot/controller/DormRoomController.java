@@ -169,6 +169,16 @@ public class DormRoomController {
         }
     }
 
+    @PostMapping("/confirmPayment/{name}")
+    public Result<?> confirmPayment(@PathVariable String name) {
+        int affectRow = dormRoomService.confirmPayment(name);
+        if (affectRow>0){
+            return Result.success("缴费成功");
+        }else {
+            return Result.error("-1","缴费异常");
+        }
+    }
+
     /**
      * 检查房间是否满员
      */

@@ -23,7 +23,8 @@ export default {
             },
             pay:{
                 amount:"",
-            }
+            },
+            dialogVisible: false, // 控制弹框显示与否
         };
     },
     created() {
@@ -53,6 +54,28 @@ export default {
                 if (res.code === "0") {
                     this.pay.amount = res.data;
                     console.log(this.pay);
+                } else {
+                    ElMessage({
+                        message: res.msg,
+                        type: "error",
+                    });
+                }
+            });
+        },
+        handlePayment() {
+            // 点击立即缴费时，显示弹框
+            this.dialogVisible = true;
+        },
+        confirmPayment() {
+            // 确认缴费，调用支付接口
+            request.post("/room/confirmPayment/" + this.name).then((res) => {
+                if (res.code === "0") {
+                    ElMessage({
+                        message: "缴费成功！",
+                        type: "success",
+                    });
+                    this.dialogVisible = false; // 关闭弹框
+                    this.getInfo(); // 刷新缴费信息
                 } else {
                     ElMessage({
                         message: res.msg,
